@@ -3,10 +3,12 @@ const morgan = require("morgan");
 const PORT = process.env.PORT || 8000;
 const bodyParser = require("body-parser");
 //const User = require("./model/user");
+var cors = require('cors');
 const user = require('./router/user');
 const product = require('./router/products');
 const app = express();
 
+app.use(cors());
 app.use(morgan("short"));
 app.use(bodyParser.json());
 app.use(express.static("public"));

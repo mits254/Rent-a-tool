@@ -12,3 +12,84 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.product-listing{
+  display:flex;
+  flex: 1;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.product-listing .product-list-item{
+
+  padding: 10px 30px;
+  width : 200px;
+}
+.login-container {
+  position: absolute;
+  height: 200px;
+  width: 800px;
+  margin: -100px 0 0 -200px;
+  top: 30%;
+  left: 50%;
+
+} 
+#space > div {
+  width: 500px;
+  margin: auto;
+  margin-top: 10%;
+  font-family: "Roboto", sans-serif;
+}
+#signup, #login {
+  width: 50%;
+  background: #2c3e50;
+}
+#signup {
+  height: 350px;
+}
+#login {
+  height: 200px;
+}
+.yellow {
+  background-color: gold;
+}
+#buttons {
+  height: 50px;
+  background: #2c3e50;
+  width: 400px;
+}
+#buttons > p {
+  width: 50%;
+  float: left;
+  color: white;
+  text-align: center;
+  padding-top: 25px;
+  height: 50%;
+  margin: 0;
+}
+#buttons > p:hover {
+  background: #f1c40f;
+  color: #2c3e50;
+  cursor: pointer;
+}
+#signup > input, #signup > button {
+  margin-top: 20px;
+  margin-left: 100px;
+  height: 25px;
+  border: none;
+  border-radius: 2px;
+}
+#first, #last, #confirm {
+  width: 250px;
+}
+#email {
+  width: 175px;
+}
+#password {
+  width: 125px;
+  margin-left: 100px !important;
+}
+#login > #email, #login > #password, #login > button {
+  width: 250px;
+  margin-left: 90px !important;
+  margin-top: 25px;
+  height: 25px;
+}

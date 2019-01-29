@@ -8,7 +8,7 @@ router.get('/products', function (req, res, next) {
     knex('products')
         .orderBy('id')
         .then((items) => {
-            console.log(items)
+            // console.log(items)
             res.send(items)
 
             //   res.render({items});
