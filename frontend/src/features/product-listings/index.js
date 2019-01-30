@@ -3,6 +3,7 @@ import ProductListItems from './product-list-item';
 // import cartReducer from '../cart/reducer';
 import { connect } from 'react-redux';
 
+
 class ProductListing extends Component {
     constructor(props) {
         super(props);
@@ -32,9 +33,11 @@ class ProductListing extends Component {
             <div className='product-listing'>
                 {products.map((product) =>
                     <ProductListItems
-                        addToCart={this.addToCart}
+                        addToCart={this.props.addToCart}
                         product={product}
-                         key={product.id} />)
+                         key={product.id} 
+                         removeFromCart={this.props.removeFromCart}
+                         cartItem={this.props.cart.filter(cartItem => cartItem.id === product.id)[0]}/>)
 
                 }
             </div>)
