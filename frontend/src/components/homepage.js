@@ -6,7 +6,7 @@ export default function Homepage(props) {
     return <div>
         <div className='front'>
             <div className='front-container'>
-                <img src='LogoMakr_9bRvck.png'  />
+                <img src='LogoMakr_9bRvck.png' alt='logo' />
                 <h2> from your neighbor's garage !!</h2>
             </div>
             <div className='front-container2'>

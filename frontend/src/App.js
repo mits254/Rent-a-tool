@@ -9,20 +9,20 @@ const Navigation = (props) => <div >
       </div>
       <i className="fas fa-paint-roller push"></i>
     </div>
-    <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+    <input type="checkbox" id="nav-toggle" className="nav-toggle" />
     <nav id='menu'>
       <ul>
         <li><a href="/"><i className="fas fa-home" id='icon'> HOME</i></a></li>
-        <li><div class="container-2">
+        {/* <li><div className="container-2">
           <span className="icon"><i className="fas fa-search" id='icon'> SEARCH</i></span>
           <input type="search" id="search" placeholder="Search..." />
-        </div></li>
+        </div></li> */}
         <li><a href=""><i className="fas fa-concierge-bell" id='icon'></i></a></li>
         <li><a href="/cart"><i className="fas fa-briefcase" id='icon'> CART</i></a></li>
         <li><a href="/login"><i className="fas fa-user" id='icon'> LOGIN</i></a></li>
       </ul>
     </nav>
-    <label for="nav-toggle" class="nav-toggle-label">
+    <label htmlFor="nav-toggle" className="nav-toggle-label">
       <span></span>
     </label>
   </div>
