@@ -2,7 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 const PORT = process.env.PORT || 8000;
 const bodyParser = require("body-parser");
-//const User = require("./model/user");
+const User = require("./model/user");
 var cors = require('cors');
 const user = require('./router/user');
 const product = require('./router/products');
@@ -21,8 +21,8 @@ app.use(function (_req, res, next) {
     next();
 });
 
-// app.post("/signup", User.signup);
-// app.post("/signin", User.signin);
+app.post("/signup", User.signup);
+app.post("/signin", User.signin);
 
 app.listen(PORT, () => {
     console.log(`Its me, the port ${PORT}`); // eslint-disable-line

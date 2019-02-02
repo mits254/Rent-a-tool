@@ -3,6 +3,7 @@ const configuration = require("../knexfile")[environment];
 const database = require("knex")(configuration);
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
+const knex = require('../knex');
 
 const signup = (req, res) => {
   const user = req.body;
@@ -30,12 +31,20 @@ const hashPassword = password => {
 };
 
 const createUser = user => {
-  return database
-    .raw(
-      "INSERT INTO users (username, password_digest, token, created_at) VALUES (?, ?, ?, ?) RETURNING id, username, created_at, token",
-      [user.username, user.password_digest, user.token, new Date()]
-    )
-    .then(data => data.rows[0]);
+  return knex('users')
+    .insert({
+      username: user.username,
+      password: user.password_digest,
+      token: user.token,
+      address: user.address,
+      city: user.city,
+      state: user.state,
+      phone: user.phone
+    }, '*')
+  // .raw(
+  //   "INSERT INTO users (username, password, token, address, city, state, phone) VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING id, username, password, token, address, city, state, phone ",
+  //   [user.username, user.password, user.address, user.token, user.city, user.state, user.phone]
+  // )
 };
 
 const createToken = () => {
@@ -60,6 +69,7 @@ const signin = (req, res) => {
     .then(() => {
       delete user.password_digest;
       res.status(200).json(user);
+      alert('you are in')
     })
     .catch(err => console.error(err)); //eslint-disable-line
 };

@@ -3,6 +3,7 @@ exports.up = (knex, Promise) => {
     table.increments();
     table.string("username").unique().notNullable();
     table.string("password").notNullable();
+    table.string("token").notNullable();
     table.string("address").notNullable();
     table.string("city").notNullable();
     table.string("state").notNullable();

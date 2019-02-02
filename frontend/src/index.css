@@ -19,9 +19,10 @@ code {
   flex-direction: row;
 }
 .product-listing .product-list-item{
-
+  margin-left: 40px;
   padding: 10px 30px;
   width : 200px;
+margin-top: 60px;
 }
 .login-container {
   position: absolute;
@@ -30,6 +31,7 @@ code {
   margin: -100px 0 0 -200px;
   top: 30%;
   left: 50%;
+  z-index:1;
 
 } 
 #space > div {
@@ -77,7 +79,7 @@ code {
   border: none;
   border-radius: 2px;
 }
-#first, #last, #confirm {
+#first, #last, #address, #city, #State, #phone, #send{
   width: 250px;
 }
 #email {
@@ -92,4 +94,309 @@ code {
   margin-left: 90px !important;
   margin-top: 25px;
   height: 25px;
+}
+@import url(https://use.fontawesome.com/releases/v5.6.3/css/all.css);
+
+/* body {
+outine: none;
+margin:0;
+font-family: arial;
+
+} */
+
+.container-view {
+  background: #FFCC5C;
+  height: 100px;
+  width: 100%;
+  position: absolute;
+  margin-top:-20px;
+  margin-bottom: 20px;
+}
+
+.role-line {
+position: absolute;
+width: 400px;
+height:80px;
+background: #AAD8B0;
+text-align: center;
+color: white;
+left: 50%;
+top:50%;
+transform: translate(-50%, -50%);
+border-radius: 50px;
+box-shadow: -0.1px -0.1px 0.1px rgba(0, 0, 250, 0.1), 
+             0.1px 0.1px 0.1px rgba(255,255,255,1), 
+        inset 0.1px 0.1px 1px rgba(255, 255, 255,0.5), 
+        inset 0.1px 1px 1px rgba(0, 0, 51,0.75), 
+        inset -1px -1px 4px rgba(170, 216,176,0.5);
+}
+
+.role {
+width:70px;
+height: 80px;
+top: 0px;
+background: #FFCC5C;
+position: absolute;
+z-index: 10;
+animation: inc;
+animation-duration: 4s;
+animation-iteration-count: infinite;
+animation-direction: alternate;
+
+}
+
+@keyframes inc{
+   0%{
+      width: 70px;
+   }
+   100%{
+      width: 350px;
+   }
+}
+
+.role-line i {
+position: absolute;
+z-index: 11;
+top: 0px;
+left: -5px;
+}
+
+.push {
+position: absolute;
+transform: rotate(90deg);
+font-size: 6.1em;
+margin-left: 0;
+color: #96CEB4;
+text-shadow: 1px 1px 1px black;
+animation: move;
+animation-duration: 4s;
+animation-iteration-count: infinite;
+animation-direction: alternate;
+}
+
+@keyframes move{
+   0%{
+      margin-left: 0%;
+   }
+   100%{
+      margin-left: 65%;
+   }
+}
+
+.nav {
+display: flex;
+flex-wrap: wrap;
+width: 80px;
+height: 500px;
+background: #AAD8B0;
+z-index: 1000;
+}
+
+.nav a {
+color: #FFCC5C;
+width: 80px;
+height: 40px;
+text-align: center;
+color: white;
+padding-top: 20px;
+transition: all .5s;
+}
+
+
+.nav a i {
+font-size: 1.5em;
+}
+
+.nav a:hover {
+color: #FFCC5C;
+background: rgba(0,0,0, .2);
+border-bottom: 10px solid #FFCC5C;
+height: 30px;
+padding-top: 10px;
+}
+
+.nav-toggle {
+	display: none;
+}
+
+/* STYLING/POSITIONING THE HAMBURGER MENU */
+.nav-toggle-label {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin-right: 1em;
+	height: 100%;
+	display: flex;
+	align-items: center;
+}
+
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+	display: block;
+	background: #fff;
+	height: 3px;
+	width: 30px;
+	border-radius: 2px;
+	position: relative;
+	transition: all .5s ease-in-out;
+}
+
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+	content: '';
+	position: absolute;
+}
+
+.nav-toggle-label span::before {
+	bottom: 10px;
+}
+.nav-toggle-label span::after {
+	top: 10px;
+}
+
+#nav-toggle:checked ~ .nav-toggle-label span {
+	background: #333; /* setting it to the same background as header so it "disappears" */
+}
+
+/* transforming the before and after span into an X */
+#nav-toggle:checked ~ .nav-toggle-label span::before {
+	transform: rotate(45deg);
+	bottom: 0;
+	background: #fff;
+}
+
+#nav-toggle:checked ~ .nav-toggle-label span::after {
+	transform: rotate(-45deg);
+	top: 0;
+	background: #fff;
+}
+
+#menu {
+	position: absolute;
+	background: rgba(51, 51, 51,0.3);
+	text-align: right;
+	top: 100%; /* puts itself directly under the preceeding relative positioned element */
+	left: 0;
+	width: 100%;
+	transform: scale(1, 0);
+	transform-origin: top; /* menu appears from the top instead if center, try and comment this out and see for yourself */
+  transition: transform .4s ease-in-out;
+ 
+}
+
+#menu ul {
+	list-style: none;
+}
+
+#menu li {
+	padding: 20px 10px;
+}
+
+#menu a {
+	text-decoration: none;
+	color: #fff;
+	font-size: 18px;
+	text-transform: uppercase;
+	opacity: 0;
+	transition: opacity .15s ease-in-out;
+}
+
+#menu a:hover {
+	color: coral;
+}
+
+#nav-toggle:checked + #menu {
+	transform: scale(1, 1);
+}
+#nav-toggle:checked ~ #menu a {
+	opacity: 1;
+	transition: opacity .25s ease-in-out .35s;
+}
+
+/* search bar */
+.container-2{
+  width: 300px;
+  vertical-align: middle;
+  white-space: nowrap;
+  position: relative;
+}
+
+.container-2 input#search{
+  width: 50px;
+  height: 50px;
+  background:  rgba(51, 51, 51,0.3);
+  border: none;
+  font-size: 10pt;
+  float: left;
+  color: #262626;
+  padding-left: 35px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  color: #fff;
+  margin-left: 1000px;
+ z-index: inherit;
+ 
+  -webkit-transition: width .55s ease;
+  -moz-transition: width .55s ease;
+  -ms-transition: width .55s ease;
+  -o-transition: width .55s ease;
+  transition: width .55s ease;
+}
+
+.container-2 input#search::-webkit-input-placeholder {
+   color: #65737e;
+}
+ 
+.container-2 input#search:-moz-placeholder { /* Firefox 18- */
+   color: #65737e;  
+}
+ 
+.container-2 input#search::-moz-placeholder {  /* Firefox 19+ */
+   color: #65737e;  
+}
+ 
+.container-2 input#search:-ms-input-placeholder {  
+   color: #65737e;  
+}
+
+.container-2 .icon{
+  position: absolute;
+  margin-left: 870px;
+  margin-bottom: 100px;
+  z-index: 1;
+  color: #4f5b66;
+  
+}
+
+.container-2 input#search:focus, .container-2 input#search:active{
+  outline:none;
+  width: 300px;
+}
+ 
+.container-2:hover input#search{
+width: 300px;
+}
+ 
+.container-2:hover .icon{
+  color: #93a2ad;
+}
+#icon{
+color: black;
+}
+.front{
+  display: inline-block;
+  padding-top: 7%;
+ 
+}
+/* .front-img{
+  padding-left: 30%;
+} */
+.front-container{
+  float: left;
+  padding-left: 30px;
+}
+.front-container2{
+  float:right;
 }
