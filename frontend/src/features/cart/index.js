@@ -6,7 +6,9 @@ function sort(items){
 }
 function Cart(props) {
     // console.log(props)
-    return <table>
+    return(<div className='login-container'>
+    <div id='signup'>
+         <table>
         <thead>
             <tr>
                 <th>Item</th>
@@ -33,6 +35,8 @@ function Cart(props) {
             }
         </tbody>
     </table>
+    </div>
+    </div>)
 }
 function mapStateToProps(state) {
     return {

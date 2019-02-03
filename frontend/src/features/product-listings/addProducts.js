@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 //import ProductListItems from './product-list-item';
-import cartReducer from '../cart/reducer';
+//import cartReducer from '../cart/reducer';
 //import { connect } from 'react-redux';
 
 
@@ -49,47 +49,32 @@ export default class ADDProduct extends Component {
     }
     render() {
         const { product } = this.state;
-        console.log(product)
-        return (<div>
+       
+        return (<div className='login-container'>
+            {/* <h1>Hello</h1> */}
+            <div id='signup'>
               <input type="text" id="first" placeholder="Product Name" value={this.state.name}
-                        onChange={e => this.setState({ product: { ...product, product: e.target.value } })}  />
+                        onChange={e => this.setState({ product: { ...product, name: e.target.value } })}  />
 
                     <input type="text" id="last" placeholder="Product Description" value={this.state.description}
                         onChange={e => this.setState({ product: { ...product, description: e.target.value } })}  />
 
                     <input type="text" id="address" placeholder="Product Location" value={this.state.location}
-                    onChange={e => this.setState({ product: { ...product, address: e.target.value } })}/>
+                    onChange={e => this.setState({ product: { ...product, location: e.target.value } })}/>
 
                     <input type="text" id="city" placeholder="Type" value={this.state.type}
-                    onChange={e => this.setState({ product: { ...product, city: e.target.value } })}/>
+                    onChange={e => this.setState({ product: { ...product, type: e.target.value } })}/>
 
                     <input type="text" id="State" placeholder="Price" value={this.state.price}
-                    onChange={e => this.setState({ product: { ...product, state: e.target.value } })}/>
+                    onChange={e => this.setState({ product: { ...product, price: e.target.value } })}/>
 
                     <input type="integer" id="phone" placeholder="Image Url" value={this.state.image}
-                    onChange={e => this.setState({ product: { ...product, phone: e.target.value } })}/>
+                    onChange={e => this.setState({ product: { ...product, image: e.target.value } })}/>
 
                     <button id="send" onClick={this.getProducts} method='POST'>Send</button>
+                </div>
                 </div>
         )
     }
 }
 
-// function mapStateToProps(state) {
-//     return {
-//         cart: state.cart
-//     }
-// }
-
-// function mapDispatchToProps(dispatch) {
-//     return {
-//         addToCart: (item) => {
-//             dispatch({ type: 'ADD', payload: item })
-//         },
-//         removeFromCart: (item) => {
-//             dispatch({ type: 'REMOVE', payload: item })
-//         }
-//     }
-// }
-
-//export default connect(mapStateToProps, mapDispatchToProps)(ProductListing)

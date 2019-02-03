@@ -29,7 +29,7 @@ router.post('/products/add',function(req, res, next){
         location: req.body.location,
         type: req.body.type,
         price: req.body.price,
-        image: req.body.image
+        image: req.body.image || 'https://source.unsplash.com/T7MS6msFRwg/600x400'
     },'*')
     .then(product => {
         res.status(201).json({product});

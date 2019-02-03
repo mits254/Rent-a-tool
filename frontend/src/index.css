@@ -23,6 +23,9 @@ code {
   padding: 10px 30px;
   width : 200px;
 margin-top: 60px;
+text-align: center;
+  padding: 4rem;
+  
 }
 .login-container {
   position: absolute;
@@ -109,7 +112,7 @@ font-family: arial;
   height: 100px;
   width: 100%;
   position: absolute;
-  margin-top:-20px;
+  
   margin-bottom: 20px;
 }
 
@@ -383,20 +386,257 @@ width: 300px;
   color: #93a2ad;
 }
 #icon{
-color: black;
+color: #FFCC5C;
 }
 .front{
   display: inline-block;
-  padding-top: 7%;
- 
 }
 /* .front-img{
   padding-left: 30%;
 } */
 .front-container{
   float: left;
-  padding-left: 30px;
+  padding-left: 40px;
+  display: grid;
+  position: relative;
+  top:20px;
+  
 }
-.front-container2{
-  float:right;
+.image1{
+  position: absolute;
+  top: 65%;
+	left: 45%;
+	z-index: 2;
+}
+
+.location{
+  position: absolute;
+  top: 15%;
+	left: 5%;
+	z-index: 2;
+}
+.frontimage{
+  z-index: 1;
+  max-width: 100%;
+  width:auto/2;
+  height: auto;
+}
+.product-div{
+  border:solid black 0.5px;
+  margin: 10%;
+  width: 1000px;
+  height: 500px;
+  
+  overflow: scroll;
+  direction: rtl;  /* <-- the trick */
+}
+.product-div::before{ content:''; display:block; width:400%; height:1px; }
+.row {
+  max-width: 60rem;
+  margin: 0 auto; 
+}
+.row:not(:last-child) { margin-bottom: 8rem; }
+
+.row::after {
+  content: "";
+  display: table;
+  clear: both; 
+}
+
+.row [class^="col-"] { float: left; }
+.row [class^="col-"]:not(:last-child) { margin-right: 3rem; }
+
+.row .col-1-of-3 { width: 18rem; }
+
+.card {
+  -moz-perspective: 300rem;
+  perspective: 300rem;
+  position: relative;
+  height: 30rem;
+  border-radius: 5px;
+  backface-visibility: hidden;
+}
+
+.card__side {
+  height: 30rem;
+  transition: all 1s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  backface-visibility: hidden;
+  border-radius: 3px;
+  overflow: hidden;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15); }
+
+.card__side--front {
+  background-color: #fff; }
+ 
+.card__side--back {
+  transform: rotateY(180deg); }
+
+.card__side--back-1 {
+  background-image: linear-gradient(to right bottom, #ffc93c, #f07b3f); }
+
+.card__side--back-2 {
+  background-image: linear-gradient(to right bottom, #30e3ca, #11999e); }
+
+.card__side--back-3 {
+  background-image: linear-gradient(to right bottom, #e84545, #903749); }
+
+.card:hover .card__side--front {
+    transform: rotateY(-180deg); }
+
+.card:hover .card__side--back {
+  transform: rotateY(0); }
+
+.card__pic {
+  width: calc(100% - 2rem);
+  height: 10rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+  background-size: cover;
+}
+
+.card__pic--1 {
+  background-image: url('https://source.unsplash.com/rumn3j2jTa4/600x400'); 
+}
+
+
+
+.card__heading {
+  position: absolute;
+  top: 8rem;
+  right: 1rem;
+  color: #fff;
+  width: 65%;
+  font-size: 1.6rem;
+  line-height: 1.4;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.card__heading span {
+  padding: .3rem 1.5rem;
+  box-decoration-break: clone;
+}
+
+.card__h-span-1 { background-image: linear-gradient(to right bottom, rgba(255, 201, 60, 0.8), rgba(240, 123, 63, 0.8)); }
+
+
+
+span.card__span-mountain {
+  font-size: 1.2rem;
+  padding: 0;
+}
+
+.card__details {
+  color: #777;
+  font-size: .9rem;
+  margin-top: -5rem;
+  padding-top: 6rem;
+  padding-bottom: 1rem;
+}
+.card__details ul {
+  width: 60%;
+  margin: auto;
+}
+
+.card__details li:not(:last-child) {
+  margin-bottom: .5rem;
+  padding-bottom: .5rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.card__side2-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.card__price {
+  color: #fff;
+  font-size: .8rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 4rem;
+}
+
+.card__price-value {
+  font-size: 3.2rem;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.btn {
+  display: inline-block;
+  font-size: 1rem;
+  text-transform: uppercase;
+  padding: .8rem 1.6rem;
+  border-radius: 2rem;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+
+.btn:active,
+.btn:focus {
+  transform: translateY(0);
+}
+
+.btn--white {
+  background-color: #fff;
+}
+
+/* geolocation */
+.geolocation{
+  background-image: url('http://priority1inc.com/wp-content/themes/priority1/images/map_warehouse.png');
+  background-position: center; 
+  background-repeat: no-repeat; 
+  /* border : solid black 0.5px; */
+  position: absolute;
+    height: 600px;
+    width: 900px;
+    margin: -100px 0 0 -200px;
+    top: 30%;
+    left: 35%;
+    text-align: center;
+    color:black;
+}
+.geoClass{
+  width: 60%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  font-size: 90%;
+}
+.h1location{
+  margin-top: 15%;
+}
+.geobtn{
+  background-color: #FFCC5C; /* Green */
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: grid;
+  font-size: 16px;
+  margin-left: 40%;
+  margin-top: 2%;
+}
+
+/* Footer */
+.site__footer {
+  background-color: #1b1d20;
+  color: #fafafa;
+  padding-bottom: 0.5em;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 0.5em;
+ 
 }

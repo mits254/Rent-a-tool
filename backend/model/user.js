@@ -59,8 +59,8 @@ const signin = (req, res) => {
     .then(foundUser => {
       user = foundUser;
       if(!user){
-        res.sendStatus(205);
-        return;
+       res.sendStatus(205);
+       return;
       }
       bcrypt.compare(userReq.password, foundUser.password, function(err, result) {
         if(result){

@@ -4,7 +4,7 @@ exports.up = (knex) => {
       table.string("name").notNullable();
       table.string("description").notNullable();
       table.string("location").notNullable();
-      table.string("type").notNullable();
+      table.string("type");
       table.integer("price").notNullable();
       table.string("image");
       table.timestamp("created_at").notNullable().defaultTo(knex.raw('now()'));
