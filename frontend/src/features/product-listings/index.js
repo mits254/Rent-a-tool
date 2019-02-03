@@ -28,7 +28,7 @@ class ProductListing extends Component {
     }
     render() {
         const { products } = this.state;
-        console.log(products)
+        
         return (
             <div className='product-listing'>
                 {products.map((product) =>
@@ -45,6 +45,7 @@ class ProductListing extends Component {
 }
 
 function mapStateToProps(state) {
+    console.log(state)
     return {
         cart: state.cart
     }

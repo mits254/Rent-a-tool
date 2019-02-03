@@ -1,6 +1,6 @@
 import React from 'react';
 import ProductListing from '../features/product-listings';
-import Search from './search';
+//import Search from './search';
 
 export default function Homepage(props) {
     return <div>

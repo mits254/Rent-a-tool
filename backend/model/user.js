@@ -41,10 +41,6 @@ const createUser = user => {
       state: user.state,
       phone: user.phone
     }, '*')
-  // .raw(
-  //   "INSERT INTO users (username, password, token, address, city, state, phone) VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING id, username, password, token, address, city, state, phone ",
-  //   [user.username, user.password, user.address, user.token, user.city, user.state, user.phone]
-  // )
 };
 
 const createToken = () => {
@@ -58,20 +54,30 @@ const createToken = () => {
 const signin = (req, res) => {
   const userReq = req.body;
   let user;
-
+  
   findUser(userReq)
     .then(foundUser => {
       user = foundUser;
-      return checkPassword(userReq.password, foundUser);
+      if(!user){
+        res.sendStatus(205);
+        return;
+      }
+      bcrypt.compare(userReq.password, foundUser.password, function(err, result) {
+        if(result){
+          return res.json(user);
+        } else {
+          return res.sendStatus(210);
+        }
+      });
     })
-    .then(res => createToken()) //eslint-disable-line
-    .then(token => updateUserToken(token, user))
-    .then(() => {
-      delete user.password_digest;
-      res.status(200).json(user);
-      alert('you are in')
-    })
-    .catch(err => console.error(err)); //eslint-disable-line
+    // .then(res => createToken()) //eslint-disable-line
+    // .then(token => updateUserToken(token, user))
+    // .then(() => {
+    //   delete user.password_digest;
+    //   return res.json(user);
+    //   //alert('you are in')
+    // })
+    .catch(err => {res.send(500)}) //eslint-disable-line
 };
 
 const findUser = userReq => {
@@ -80,28 +86,23 @@ const findUser = userReq => {
     .then(data => data.rows[0]);
 };
 
-const checkPassword = (reqPassword, foundUser) => {
-  return new Promise((resolve, reject) =>
-    bcrypt.compare(reqPassword, foundUser.password_digest, (err, res) => {
-      if (err) {
-        reject(err);
-      } else if (res) {
-        resolve(res);
-      } else {
-        reject(new Error("Passwords do not match!"));
-      }
-    })
-  );
-};
+// const checkPassword = (reqPassword, foundUser) => {
+//     bcrypt.compare(reqPassword, foundUser.password, function(err, res) {
+//       if(res)
+//         res.sendStatus('200');
+//       else
+//         res.sendStatus('500')
+//     });
+// };
 
-const updateUserToken = (token, user) => {
-  return database
-    .raw(
-      "UPDATE users SET token = ? WHERE id = ? RETURNING id, username, token",
-      [token, user.id]
-    )
-    .then(data => data.rows[0]);
-};
+// const updateUserToken = (token, user) => {
+//   return database
+//     .raw(
+//       "UPDATE users SET token = ? WHERE id = ? RETURNING id, username, token",
+//       [token, user.id]
+//     )
+//     .then(data => data.rows[0]);
+// };
 
 const authenticate = userReq => {
   findByToken(userReq.token).then(user => {

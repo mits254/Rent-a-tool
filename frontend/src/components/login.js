@@ -129,43 +129,52 @@ class Login extends Component{
                 
             }
         }
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSubmit2 = this.handleSubmit2.bind(this);
+        //this.handleChange = this.handleChange.bind(this);
     }
-    handleChange = event => {
-        this.setState({
-          [event.target.id]: event.target.value
-        });
-      }
-    handleSubmit(e) {
+    // handleChange = event => {
+    //     this.setState({
+    //       [event.target.name]: event.target.value
+    //     });
+    //     console.log(event)
+    //   }
+    handleSubmit2(e) {
         e.preventDefault();
         const user = {
-          username: this.state.username,
-          password: this.state.password
+          username: this.state.user.username,
+          password: this.state.user.password
         };
-        const options = {
-          method: "GET",
-          headers: {
-            Accept: "applications/json",
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(user)
-        };
-        const request = ("http://localhost:8000/signin", options);
-        fetch(request)
+        //console.log(user)
+        const request = 'http://localhost:8000/signin';
+        fetch(request,{
+            method: 'POST',
+            headers: {
+                'Content-Type':'application/json',
+            },
+            body: JSON.stringify(user)
+        })
         .then(res => console.log(res))
-        alert("You are signin");
+        .catch((err) => {
+            console.log('Incorrect Username or Password')
+        });
       }
     
     render() {
+        const { user } = this.state;
         return (
             <div>
 
                 <div id="login">
-                    <input type="email" id="email" placeholder="Email"  value={this.state.username}
+                <input type="text" id="email" placeholder="Username" value={this.state.username}
+                        onChange={e => this.setState({ user: { ...user, username: e.target.value } })}  />
+                    <input type="password" id="password" placeholder="Password" value={this.state.password}
+                        onChange={e => this.setState({ user: { ...user, password: e.target.value } })}  />
+
+                    {/* <input type="email" id="email" placeholder="Email"  value={this.state.username}
                      onChange={this.handleChange}/>
                     <input type="password" id="password" placeholder="Password"  value={this.state.password}
-                    onChange={this.handleChange}/>
-                    <button id="send" onClick={this.handleSubmit} method='GET'>Send</button>
+                    onChange={this.handleChange}/> */}
+                    <button id="send" onClick={this.handleSubmit2} method='POST'>Send</button>
                 </div>
 
             </div>

@@ -13,11 +13,11 @@ const Navigation = (props) => <div >
     <nav id='menu'>
       <ul>
         <li><a href="/"><i className="fas fa-home" id='icon'> HOME</i></a></li>
-        {/* <li><div className="container-2">
+        <li><div className="container-2">
           <span className="icon"><i className="fas fa-search" id='icon'> SEARCH</i></span>
           <input type="search" id="search" placeholder="Search..." />
-        </div></li> */}
-        <li><a href=""><i className="fas fa-concierge-bell" id='icon'></i></a></li>
+        </div></li>
+        <li><a href="#"><i className="fas fa-concierge-bell" id='icon'> Add product</i></a></li>
         <li><a href="/cart"><i className="fas fa-briefcase" id='icon'> CART</i></a></li>
         <li><a href="/login"><i className="fas fa-user" id='icon'> LOGIN</i></a></li>
       </ul>
