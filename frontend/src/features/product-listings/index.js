@@ -17,21 +17,29 @@ class ProductListing extends Component {
         this.getProducts();
     }
     getProducts = () => {
-
-        const request = 'http://localhost:8000/products';
+  if(this.props.user_id){
+        const request = `http://localhost:8000/products/${this.props.user_id}`;
         fetch(request)
             .then(res => { return res.json() })
             .then((res) => this.setState({ products: res }))
             .catch((err) => {
                 console.error(err);
             })
+        } else {
+            const request = 'http://localhost:8000/products';
+        fetch(request)
+            .then(res => { return res.json() })
+            .then((res) => this.setState({ products: res }))
+            .catch((err) => {
+                console.error(err);
+            })
+        }
     }
     render() {
         const { products } = this.state;
-        
-        return (
-            <div className='product-listing'>
-                {products.map((product) =>
+        console.log(products)
+        return (<div className='product-listing'>
+                {products.map((product) => 
                     <ProductListItems
                         addToCart={this.props.addToCart}
                         product={product}

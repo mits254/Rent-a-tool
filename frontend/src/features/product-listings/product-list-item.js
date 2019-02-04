@@ -28,7 +28,7 @@ export default function ProductListItem(props) {
                                 <h4 className="card__price">
                                     <p className="card__price-value">{props.product.price} pts</p>
                                 </h4>
-                                <a href="" className="btn btn--white">
+                                <div className="btn btn--white">
                                     <AddBtn cartItem={props.cartItem}
                                         product={props.product}
                                         addToCart={props.addToCart} />
@@ -39,7 +39,7 @@ export default function ProductListItem(props) {
                                                 removeFromCart={props.removeFromCart} />
                                             : null
                                     }
-                                </a>
+                                </div>
                             </div>
                         </div>
                     </div>

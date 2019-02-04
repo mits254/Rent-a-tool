@@ -48,8 +48,9 @@ class Signup extends Component {
                 address: '',
                 city: '',
                 state: '',
-                phone: ''
-            }
+                phone: '',   
+            },
+            authenticated: '',
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -62,10 +63,8 @@ class Signup extends Component {
             address: this.state.user.address,
             city: this.state.user.city,
             state: this.state.user.state,
-            phone: this.state.user.phone
+            phone: this.state.user.phone,
         }
-
-        console.log(form)
         const request = 'http://localhost:8000/signup';
         fetch(request, {
             method: 'POST',
@@ -73,14 +72,12 @@ class Signup extends Component {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(form)
-        }).then(function (response) {
-            // if(response.status >= 400){
-            //     throw new Error("Bad response from server");
-            // }
-            //console.log(response)
+        }).then(response => {
             return response.json();
-        }).then(function (data) {
-            console.log(data)
+        }).then(data => {
+            console.log(data);
+            sessionStorage.setItem('token', JSON.stringify(data));
+            this.setState({ authenticated: true });
         })
             .catch((err) => {
                 console.error(err);
@@ -89,9 +86,12 @@ class Signup extends Component {
 
     render() {
         const { user } = this.state;
+        console.log(user);
+        const isAuthenticated = this.state.authenticated;
+
         return (
             <div>
-
+                {isAuthenticated ? <Redirect to={{ pathname: '/' }} /> : (
                 <div id="signup">
                     <input type="text" id="first" placeholder="Username" value={this.state.username}
                         onChange={e => this.setState({ user: { ...user, username: e.target.value } })} />
@@ -112,7 +112,7 @@ class Signup extends Component {
                         onChange={e => this.setState({ user: { ...user, phone: e.target.value } })} />
 
                     <button id="send" onClick={this.handleSubmit} method='POST'>Send</button>
-                </div>
+                </div>)}
             </div>
 
         )
@@ -160,9 +160,9 @@ class Login extends Component {
             )
             .then(
                 res => {
-                    console.log(res);
-                    sessionStorage.setItem('token', res);
-                    this.setState({ authenticated: 1 });
+                    //console.log(res);
+                    sessionStorage.setItem('token', JSON.stringify(res));
+                    this.setState({ authenticated: true });
                 }
             )
             .catch((err) => {
@@ -171,7 +171,7 @@ class Login extends Component {
     }
     isAuthenticated() {
         const token = sessionStorage.getItem('token');
-        console.log(token)
+       // console.log(token)
         if (token) return true;
     }
 

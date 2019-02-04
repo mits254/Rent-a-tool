@@ -1,47 +1,41 @@
 import React, { Component } from 'react';
-import Router from './Router';
+import {Router, Route, Switch} from 'react-router-dom';
+import Navigation from './navigation';
+import HomePage from './components/homepage'
+import CartPage from './components/cartpage'
+import Login from './components/login'
+import ADDProduct from './features/product-listings/addProducts';
+import Logout from './components/logout';
+import GeoLocation from './components/geolocation';
+import Footer from './components/footer';
+import history from './history';
+import MyAccount from './components/myaccout';
 
-
-const isAuthen = sessionStorage.getItem('token');
-const Navigation = (props) => <div >
-  <div className="container-view">
-    <div className="role-line">
-      <h1> RENT A TOOL</h1>
-      <div className="role">
-      </div>
-      <i className="fas fa-paint-roller push"></i>
-    </div>
-    <input type="checkbox" id="nav-toggle" className="nav-toggle" />
-    <nav id='menu'>
-      <ul>
-        <li><a href="/"><i className="fas fa-home" id='icon'> HOME</i></a></li>
-        <li><div className="container-2">
-          <span className="icon"><i className="fas fa-search" id='icon'> SEARCH</i></span>
-          <input type="search" id="search" placeholder="Search..." />
-        </div></li>
-        <li><a href="/add"><i className="fas fa-concierge-bell" id='icon'> Add product</i></a></li>
-        <li><a href="/cart"><i className="fas fa-briefcase" id='icon'> CART</i></a></li>
-        {
-          isAuthen ?
-             <li><a href="/logout"><i className="fas fa-user" id='icon'> LOGOUT</i></a></li>
-           :
-             <li><a href="/login"><i className="fas fa-user" id='icon'> LOGIN</i></a></li>
-        }   
-      </ul>
-    </nav>
-    <label htmlFor="nav-toggle" className="nav-toggle-label">
-      <span></span>
-    </label>
-  </div>
-</div>
+//const isAuthen = sessionStorage.getItem('token');
 
 class App extends Component {
 
   render() {
     return (
       <div>
-        <Navigation />
-        <Router />    
+        <Router history={history}>
+        <div>
+          <div><Navigation /></div>
+          <div>
+            <Switch>
+              <Route exact path='/' component={HomePage} />
+              <Route exact path='/cart' component={CartPage} />
+              <Route exact path='/add' component={ADDProduct}/>
+              <Route exact path='/login' component={Login} />
+              <Route exact path='/logout' component={Logout} />
+              <Route exact path='/geolocation' component={GeoLocation}/> 
+              <Route exact path='/myaccount' component={MyAccount}/> 
+            </Switch>
+          </div>
+          <div>
+          <Footer/></div>
+        </div>
+        </Router>    
       </div>
     );
   }
