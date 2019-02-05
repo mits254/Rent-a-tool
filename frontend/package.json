@@ -5,8 +5,11 @@
   "dependencies": {
     "auth0-js": "^9.10.0",
     "create-react-class": "^15.6.3",
+    "material-ui-search-bar": "^0.4.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
+    "react-google-autocomplete": "^1.0.18",
+    "react-load-script": "0.0.6",
     "react-redux": "^6.0.0",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",

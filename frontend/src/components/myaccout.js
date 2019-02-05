@@ -12,9 +12,9 @@ export default function MyAccount() {
             <i className="fas fa-briefcase" id='icon'> Add Product</i>
             </Link>
         </button>
-        
+        <div className=''>
         <Productlisting user_id = {token.id}/>
-        
+        </div>
     </div>)
 
 }

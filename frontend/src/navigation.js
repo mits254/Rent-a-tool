@@ -1,8 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import IsAuth from './components/isAuth';
 
-const Navigation = (props) => {
+export default class Navigation  extends Component{
+    constructor(){
+        super();
+        this.handleHoverOn = this.handleHoverOn.bind(this);
+        this.handleHoverOff = this.handleHoverOff.bind(this);
+        this.state = {expand: false};
+    }
+    
+    handleHoverOn(){
+        if(this.props.hover){
+            this.setState({expand: true});
+        }
+    }
+    
+    handleHoverOff(){
+        if(this.props.hover){
+            this.setState({expand: false});
+        }
+    }
+    render(){
     return (<div >
         <div className="container-view">
             <div className="role-line">
@@ -11,14 +30,13 @@ const Navigation = (props) => {
                 </div>
                 <i className="fas fa-paint-roller push"></i>
             </div>
-            <input type="checkbox" id="nav-toggle" className="nav-toggle" />
+            <input type="checkbox" id="nav-toggle" className="nav-toggle"  onMouseEnter={this.handleHoverOn}
+            onMouseLeave={this.handleHoverOff}/>
             <nav id='menu'>
                 <ul>
                     <li><Link to="/"><i className="fas fa-home" id='icon'> HOME</i></Link></li>
-                    <li><div className="container-2">
-                        <span className="icon"><i className="fas fa-search" id='icon'> SEARCH</i></span>
-                        <input type="search" id="search" placeholder="Search..." className='search-input'/>
-                    </div></li>
+                    <li className="icon"><Link to='/allproduct'>
+                        <i className="fas fa-search" id='icon'> SEARCH</i></Link></li>
                     <li><Link to="/cart"><i className="fas fa-briefcase" id='icon'> CART</i></Link></li>
                     <IsAuth />
                 </ul>
@@ -28,6 +46,7 @@ const Navigation = (props) => {
             </label>
         </div>
     </div>);
+    }
 };
 
-export default Navigation;
+

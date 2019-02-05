@@ -28,9 +28,22 @@ router.get('/products/:user_id', function (req, res, next) {
         .then((items) => {
             console.log(items)
             res.send(items)
+        })
+        .catch((err) => {
+            res.status(500).json({
+                status: 'error',
+                data: err
+            });
+        });
+});
 
-            //   res.render({items});
-            //res.send(items);
+router.get('/products/search/:name', function (req, res, next) {
+    console.log(req.params)
+    knex('products')
+        .where('name',req.params.name)
+        .then((items) => {
+            console.log(items)
+            res.send(items)
         })
         .catch((err) => {
             res.status(500).json({

@@ -10,6 +10,7 @@ import GeoLocation from './components/geolocation';
 import Footer from './components/footer';
 import history from './history';
 import MyAccount from './components/myaccout';
+import AllProducts from './components/allproduct';
 
 //const isAuthen = sessionStorage.getItem('token');
 
@@ -30,6 +31,7 @@ class App extends Component {
               <Route exact path='/logout' component={Logout} />
               <Route exact path='/geolocation' component={GeoLocation}/> 
               <Route exact path='/myaccount' component={MyAccount}/> 
+              <Route exact path='/allproduct' component={AllProducts}/>
             </Switch>
           </div>
           <div>

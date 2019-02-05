@@ -13,10 +13,16 @@ code {
     monospace;
 }
 .product-listing{
-  display:flex;
+  display:inline-flex;
   flex: 1;
   flex-wrap: wrap;
   flex-direction: row;
+  margin-top:-70px;
+  margin-bottom: 20px;
+}
+.allproduct{
+ 
+
 }
 .product-listing .product-list-item{
   margin-left: 40px;
@@ -232,7 +238,6 @@ padding-top: 10px;
 	display: flex;
 	align-items: center;
 }
-
 .nav-toggle-label span,
 .nav-toggle-label span::before,
 .nav-toggle-label span::after {
@@ -269,7 +274,7 @@ padding-top: 10px;
 	background: #fff;
 }
 
-#nav-toggle:checked ~ .nav-toggle-label span::after {
+ #nav-toggle:checked ~ .nav-toggle-label span::after {
 	transform: rotate(-45deg);
 	top: 0;
 	background: #fff;
@@ -285,8 +290,8 @@ padding-top: 10px;
 	transform: scale(1, 0);
 	transform-origin: top; /* menu appears from the top instead if center, try and comment this out and see for yourself */
   transition: transform .4s ease-in-out;
- 
 }
+
 
 #menu ul {
 	list-style: none;
@@ -319,7 +324,7 @@ padding-top: 10px;
 
 /* search bar */
 .container-2{
-  width: 300px;
+  /* width: 300px; */
   vertical-align: middle;
   white-space: nowrap;
   position: relative;
@@ -333,12 +338,12 @@ padding-top: 10px;
   font-size: 10pt;
   float: left;
   color: #FFCC5C;
-  padding-left: 35px;
+  padding-left: 30px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
   color: #FFCC5C;
-  margin-left: 1000px;
+  
  z-index: inherit;
  
   -webkit-transition: width .55s ease;
@@ -366,8 +371,9 @@ padding-top: 10px;
 
 .container-2 .icon{
   position: absolute;
-  margin-left: 870px;
+  margin-left: 1050px;
   margin-bottom: 100px;
+  margin-top:30px;
   z-index: 1;
   color: #4f5b66;
   
@@ -391,6 +397,53 @@ color: #FFCC5C;
 .front{
   display: inline-block;
 }
+.search-container1 {
+  padding-top: 140px;
+  width: 490px;
+  display: block;
+  margin: 0 auto;
+}
+#search-bar{
+  background-color: #333;
+  opacity: 0.5;
+}
+#search-bar:hover { color: black; background:whitesmoke; }
+input#search-bar {
+  margin: 0 auto;
+  width: 100%;
+  height: 45px;
+  padding: 0 20px;
+  font-size: 1rem;
+  border: 1px solid #D0CFCE;
+  outline: none;
+}
+input#search-bar:focus {
+  border: 1px solid #008ABF;
+  transition: 0.35s ease;
+  color: #008ABF;
+}
+input#search-bar:focus::-webkit-input-placeholder {
+  transition: opacity 0.45s ease;
+  opacity: 0;
+}
+input#search-bar:focus::-moz-placeholder {
+  transition: opacity 0.45s ease;
+  opacity: 0;
+}
+input#search-bar:focus:-ms-placeholder {
+  transition: opacity 0.45s ease;
+  opacity: 0;
+}
+
+.search-icon {
+  position: relative;
+  float: right;
+  width: 75px;
+  height: 75px;
+  top: -62px;
+  right: -45px;
+}
+
 
 /* .front-img{
   padding-left: 30%;
@@ -404,8 +457,13 @@ color: #FFCC5C;
   
 }
 .image1{
+  min-width: 100vw;
+  max-height: 100vh;
+  margin: auto;
+}
+.image2{
   position: absolute;
-  top: 65%;
+  top: 55%;
 	left: 45%;
 	z-index: 2;
 }
@@ -422,16 +480,21 @@ color: #FFCC5C;
   width:auto/2;
   height: auto;
 }
-.product-div{
-  border:solid black 0.5px;
-  margin: 10%;
-  width: 1000px;
-  height: 500px;
+#recent {
+ 
   
-  overflow: scroll;
-  direction: rtl;  /* <-- the trick */
 }
-.product-div::before{ content:''; display:block; width:400%; height:1px; }
+/* #recent #recent-container {
+  position: absolute;
+  white-space: nowrap;
+  left: 0;
+  -webkit-transition: all 2s ease-in-out;
+  transition: all 1s ease-in-out;
+} */
+/* #recent #recent-container .recent-product {
+  display: inline-block;
+} */
+
 .row {
   max-width: 60rem;
   margin: 0 auto; 
@@ -650,6 +713,7 @@ span.card__span-mountain {
 .name{
   padding-left: 10%;
   display: inline;
+  padding-top:5%;
 }
 .btn-product{
   float:right;

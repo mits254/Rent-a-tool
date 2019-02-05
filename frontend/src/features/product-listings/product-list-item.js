@@ -19,7 +19,7 @@ export default function ProductListItem(props) {
                             <div className="card__details">
                                 <ul>
                                     <li>Avalaible location : {props.product.location}</li>
-                                    <li>Description {props.product.decription}</li>
+                                    <li>Description : {props.product.description}</li>
                                 </ul>
                             </div>
                         </div>

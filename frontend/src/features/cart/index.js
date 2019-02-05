@@ -5,7 +5,8 @@ function sort(items) {
     return items.sort((a, b) => a.id < b.id)
 }
 function Cart(props) {
-    // console.log(props)
+    console.log(props)
+    if(props.cart.length !== 0){
     return (<div className="cart-page">
     <h1>Cart</h1>
     <table id="cart" className="table table-hover table-condensed">
@@ -55,6 +56,9 @@ function Cart(props) {
       </tfoot>
     </table>
   </div>)
+    } else {
+        return <h1 className="cart-page"> YOUR CART IS EMPTY !!!</h1>
+    }
 
          {/* <table classNameName='cart-page'> 
                 <thead>
