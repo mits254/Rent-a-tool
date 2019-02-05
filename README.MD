@@ -15,10 +15,10 @@ A user want to do something around house, but don’t have a big enough ladder t
 <img src="public/front.png"/>
 
 
-<img src='rentTools.gif'/>
+<img src='public/rentTools.gif'/>
 
 
-<img src="geolocation.png"/>
+<img src="public/geolocation.png"/>
 
 
 ### BEST FEATURE
