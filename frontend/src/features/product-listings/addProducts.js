@@ -52,7 +52,7 @@ export default class ADDProduct extends Component {
     render() {
         const { product } = this.state;
         // const {user_id} = this.props.location.state;
-        console.log(this.props.location.state.user_id)
+       
         return (<div className='login-container'>
             <h1>ADD YOUR PRODUCT</h1>
             <div id='signup'>

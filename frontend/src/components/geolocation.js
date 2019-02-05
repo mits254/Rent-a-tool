@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 /* global google */
 import Autocomplete from 'react-google-autocomplete';
+import { Link } from 'react-router-dom';
 
 
 
 export default class GeoLocation extends Component {
     constructor(props) {
         super(props);
+        this.state={
+            place : {}
+        }
         this.autocompleteInput = React.createRef();
         this.autocomplete = null;
     this.handlePlaceChanged = this.handlePlaceChanged.bind(this);
@@ -19,18 +23,19 @@ export default class GeoLocation extends Component {
       }
     
       handlePlaceChanged(){
-        const place = this.autocomplete.getPlace();
-        console.log(place);
+         this.setState ({place : this.autocomplete.getPlace()})    
       }
       
 
-render(){
+render(){ 
+    let place_1 = this.state.place.formatted_address;
+    console.log(place_1);
     return (
         <div className='geolocation'>
             <h1 className='h1location'>YOUR LOCATION ?? </h1>
             <input ref={this.autocompleteInput}
             placeholder='your city...' className='geoClass' type='text'></input>
-            <button className='geobtn'> Check</button>
+            <Link className='geobtn' to={{ pathname:'/', state :{place : `${place_1}`}} }> Check</Link>
             
         </div>
     )

@@ -690,8 +690,10 @@ span.card__span-mountain {
   text-decoration: none;
   display: grid;
   font-size: 16px;
-  margin-left: 40%;
+  margin-left: 45%;
   margin-top: 2%;
+  width:45px;
+  text-align: center;
 }
 
 /* Footer */
