@@ -12,7 +12,7 @@ A user want to do something around house, but don’t have a big enough ladder t
 * Run `nodemon server.js` command into the backend folder to start the server.
 
 
-<img src=" front.png"/>
+<img src="public/front.png"/>
 
 
 <img src='rentTools.gif'/>
